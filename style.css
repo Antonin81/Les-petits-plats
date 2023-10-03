@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+*{
+    font-family: 'Anton', sans-serif;
+}
+
+:root{
+    --color-yellow: #FFD15B;
+    --color-black: #1B1B1B;
+    --color-grey: #EDEDED;
+    --color-white: #FFFFFF;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+header{
+    height: 667px;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-image{
+    position: absolute;
+    width: 100%;
+    object-fit: contain;
+    z-index: -1;
+}
+
+h1{
+    font-size: 44px;
+    color: var(--color-yellow);
+    max-width: 890px;
+    text-align: center;
+    margin-inline: auto;
+    margin-top: 170px;
+}
+
+.logo{
+    margin-top: 50px;
+    margin-left: 70px;
+}
+
+.header-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-form input{
+    height: 72px;
+    width: 100%;
+    max-width: 955px;
+    margin: 0;
+    display: inline-block;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.header-form button{
+    height: 52px;
+    aspect-ratio: 1/1;
+    margin-left: -65px;
+    display: block;
+    border: none;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border-radius: 10px;
+}
