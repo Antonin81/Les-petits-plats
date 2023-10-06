@@ -88,6 +88,13 @@ h1{
     margin: 0;
 }
 
+.header-form button:hover{
+    background-color: var(--color-yellow);
+}
+
+.header-form button:hover img{
+    filter: brightness(0);
+}
 
 main{
     max-width: 1200px;
@@ -99,6 +106,8 @@ main{
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    margin-top: 21px;
+    margin-bottom: 55px;
 }
 
 #recipies{
@@ -141,6 +150,12 @@ article h3{
     padding: 32px 25px;
 }
 
+.ingredients{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
 .preparation-time{
     position: absolute;
     padding: 5px 15px 5px 15px;
@@ -153,4 +168,105 @@ article h3{
 .preparation-time p{
     margin: 0;
     font-size: 12px;
+}
+
+.selects{
+    display: flex;
+    gap: 64px;
+}
+
+.select{
+    position: relative;
+}
+
+.select-button{
+    padding: 17px 16px 17px 16px;
+    border: none;
+    background-color: var(--color-white);
+    border-radius: 11px;
+    cursor: pointer;
+    position: relative;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 500;
+    height: 56px;
+    width: 195px;
+}
+
+.select-button::before{
+    content: "\f078";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    right: 10%;
+}
+
+.select-button[data-open=true]::before{
+    transform: rotate(180deg);
+}
+
+.select-dropdown{
+    position: absolute;
+    top: calc(100% - 17px);
+    border-radius: 0 0 5px 5px;
+    z-index: 2;
+    background-color: var(--color-white);
+    left: 0;
+    padding-inline: 16px;
+    width: calc(195px - 32px);
+    padding-top: 14px;
+    max-height: calc(315px - 39px);
+    
+}
+
+.select-dropdown ul{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    overflow-y: scroll;
+    max-height: calc(215px - 24px) ;
+}
+
+.select-dropdown li{
+    list-style: none;
+}
+
+.select-dropdown li:last-child{
+    margin-bottom: 9px;
+}
+
+.select-dropdown button{
+    border: none;
+    background-color: var(--color-white);
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+}
+
+.select-search-section{
+    position: relative;
+    display: flex;
+    margin-bottom: 24px;
+    cursor: pointer;
+}
+
+.select-search-section img{
+    position: absolute;
+    right: 11.5px;
+    top: 50%;
+    height: 14px;
+    transform: translateY(-50%);
+}
+
+.select-search-section input {
+    width: 100%;
+    padding: 10px 9px;
+    font-size: 16px;
+}
+
+.hidden{
+    visibility: collapse;
 }

@@ -1,74 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Les Petits Plats</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-</head>
-<body>
-    <header>
-        <img class="banner-image" src="./img/banner.png" alt="">
-        <img class="logo" src="./img/Logo.png" alt="Logo Les Petits Plats">
-        <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
-        <form class="header-form" action="">
-            <input type="text" placeholder="Rechercher une recette, un ingrédient, ...">
-            <button><img src="./img/magnifying-glass.png" class="magnifying-glass" alt=""></button>
-        </form>
-    </header>
-    <main>
-        <div id="sort-section">
-            <div class="selects">
-                <p>ici un select</p>
-            </div>
-            <h2>1500 recettes</h2>
-        </div>
-        <div id="recipies">
-            <article>
-                <div class="preparation-time">
-                    <p>10min</p>
-                </div>
-                <img src="./img/banner.png" alt="">
-                <div class="recipy-content">
-                    <h2>Lait de coco</h2>
-                    <h3>RECETTE</h3>
-                    <p class="steps">Faire cuire le riz. Une fois le riz cuit, le laisser refroidir. Couper les oeufs dur en quarts ou en lamelle au choix, coupez le tomates en dés, ajouter au riz les oeufs, les tomates, le poisson, le maïs et </p>
-                    <h3>INGREDIENTS</h3>
-                    <div class="ingredients">
-                        <div>
-                            <p class="ingredient-name">Riz Blanc</p>
-                            <p class="ingredient-quantity">500grammes</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Les Petits Plats</title>
+        <script src="https://kit.fontawesome.com/8156064e39.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <img class="banner-image" src="./img/banner.png" alt="">
+            <a href="#">
+                <img class="logo" src="./img/Logo.png" alt="Logo Les Petits Plats">
+            </a>
+            <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
+            <form class="header-form" action="">
+                <input type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+                <button><img src="./img/magnifying-glass.png" class="magnifying-glass" alt=""></button>
+            </form>
+        </header>
+        <main>
+            <div id="sort-section">
+                <div class="selects">
+                    <div class="select">
+                        <button class="select-button" id="Ingredients" data-open=false>Ingrédients</button>
+                        <div class="select-dropdown hidden">
+                            <div class="select-search-section">
+                                <input type="search" name="" id="">
+                                <img src="./img/magnifying-glass-dropdown.png" alt="">
+                            </div>
+                            <ul class="option-list">
+                            </ul>
                         </div>
-                        <div>
-                            <p class="ingredient-name">Riz Blanc</p>
-                            <p class="ingredient-quantity">500grammes</p>
+                    </div>
+                    <div class="select">
+                        <button class="select-button" id="Appliances" data-open=false>Appareils</button>
+                        <div class="select-dropdown hidden">
+                            <div class="select-search-section">
+                                <input type="search" name="" id="">
+                                <img src="./img/magnifying-glass-dropdown.png" alt="">
+                            </div>
+                            <ul class="option-list">
+                            </ul>
                         </div>
-                        <div>
-                            <p class="ingredient-name">Riz Blanc</p>
-                            <p class="ingredient-quantity">500grammes</p>
-                        </div>
-                        <div>
-                            <p class="ingredient-name">Riz Blanc</p>
-                            <p class="ingredient-quantity">500grammes</p>
-                        </div>
-                        <div>
-                            <p class="ingredient-name">Riz Blanc</p>
-                            <p class="ingredient-quantity">500grammes</p>
+                    </div>
+                    <div class="select">
+                        <button class="select-button" id="Ustensils" data-open=false>Ustensiles</button>
+                        <div class="select-dropdown hidden">
+                            <div class="select-search-section">
+                                <input type="search" name="" id="">
+                                <img src="./img/magnifying-glass-dropdown.png" alt="">
+                            </div>
+                            <ul class="option-list">
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </article>
-            <article>
-                <img src="./img/banner.png" alt="">
-            </article>
-            <article>
-                <img src="./img/banner.png" alt="">
-            </article>
-            <article>
-                <img src="./img/banner.png" alt="">
-            </article>
-        </div>
-    </main>
-</body>
+                <h2>1500 recettes</h2>
+            </div>
+            <div id="recipies">
+            </div>
+        </main>
+    </body>
+    <script src="recipies.js"></script>
+    <script src="script.js"></script>
 </html>
