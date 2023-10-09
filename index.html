@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Les Petits Plats</title>
+        <script src="https://kit.fontawesome.com/8156064e39.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <img class="banner-image" src="./img/banner.png" alt="">
+            <a href="#">
+                <img class="logo" src="./img/Logo.png" alt="Logo Les Petits Plats">
+            </a>
+            <h1>CHERCHEZ PARMI PLUS DE 1500 RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</h1>
+            <form class="header-form">
+                <input type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+                <button><img src="./img/magnifying-glass.png" class="magnifying-glass" alt=""></button>
+            </form>
+        </header>
+        <main>
+            <div id="sort-section">
+                <div class="selects">
+                    <div class="select">
+                        <button class="select-button" id="Ingredients" data-open=false>Ingrédients</button>
+                        <div class="select-dropdown hidden">
+                            <div class="select-search-section">
+                                <input type="search">
+                                <img src="./img/magnifying-glass-dropdown.png" alt="">
+                            </div>
+                            <ul class="option-list">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="select">
+                        <button class="select-button" id="Appliances" data-open=false>Appareils</button>
+                        <div class="select-dropdown hidden">
+                            <div class="select-search-section">
+                                <input type="search">
+                                <img src="./img/magnifying-glass-dropdown.png" alt="">
+                            </div>
+                            <ul class="option-list">
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="select">
+                        <button class="select-button" id="Ustensils" data-open=false>Ustensiles</button>
+                        <div class="select-dropdown hidden">
+                            <div class="select-search-section">
+                                <input type="search">
+                                <img src="./img/magnifying-glass-dropdown.png" alt="">
+                            </div>
+                            <ul class="option-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <h2>1500 recettes</h2>
+            </div>
+            <div id="recipies">
+            </div>
+        </main>
+    </body>
+    <script src="recipies.js"></script>
+    <script src="script.js"></script>
+</html>
