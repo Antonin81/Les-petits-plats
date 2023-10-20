@@ -1,12 +1,12 @@
 function research(inputList){
     emptyRecipes();
     let recipesCards="";
-    for(let recipe of recipes){
+    recipes.forEach(recipe => {
         if(tests(recipe, inputList)){
             console.log(recipe);
             recipesCards+=createCardDOM(recipe);
         }
-    }
+    });
     document.getElementById("recipies").innerHTML=recipesCards;
 }
 
@@ -20,21 +20,21 @@ function testAppliance(recipe, inputList){
 
 function testUstensils(recipe, inputList){
     let isAnUstensil = false;
-    for(let input of inputList){
+    inputList.forEach(input => {
         if(recipe.ustensils.includes(input)){
             isAnUstensil=true;
         }
-    }
+    });
     return isAnUstensil;
 }
 
 function testIngredients(recipe, inputList){
     let isAnIngredient = false;
-    for(let ingredient of recipe.ingredients){
+    recipe.ingredients.forEach(ingredient => {
         if(inputList.includes(ingredient.ingredient)){
             isAnIngredient=true
         }
-    }
+    });
     return isAnIngredient;
 }
 
