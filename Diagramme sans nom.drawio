@@ -1,6 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram name="Page-1" id="oObEu-THmnJyNQyAg0bx">
+<<<<<<< HEAD
         <mxGraphModel dx="885" dy="479" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+=======
+        <mxGraphModel dx="885" dy="438" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+>>>>>>> 8ac9f648be43f1defe0dca60108334abd91aed28
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -353,6 +357,15 @@
                 <mxCell id="13" value="NON" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
                     <mxGeometry x="585.1" y="720" width="60" height="30" as="geometry"/>
                 </mxCell>
+<<<<<<< HEAD
+=======
+                <mxCell id="15" value="Utilisation de fonctions liées à l'objet" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+                    <mxGeometry y="80" width="120" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="Utilisation de fonctions natives" style="shape=hexagon;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+                    <mxGeometry x="707" y="90" width="120" height="40" as="geometry"/>
+                </mxCell>
+>>>>>>> 8ac9f648be43f1defe0dca60108334abd91aed28
             </root>
         </mxGraphModel>
     </diagram>
