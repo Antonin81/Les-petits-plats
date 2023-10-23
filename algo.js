@@ -1,12 +1,12 @@
 function research(inputList){
     emptyRecipes();
     let recipesCards="";
-    for(let recipe of recipes){
+    recipes.forEach(recipe => {
         if(tests(recipe, inputList)){
             console.log(recipe);
             recipesCards+=createCardDOM(recipe);
         }
-    }
+    });
     document.getElementById("recipies").innerHTML=recipesCards;
 }
 

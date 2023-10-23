@@ -1,6 +1,10 @@
 <mxfile host="65bd71144e">
     <diagram name="Page-1" id="oObEu-THmnJyNQyAg0bx">
+<<<<<<< HEAD
         <mxGraphModel dx="1074" dy="590" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+=======
+        <mxGraphModel dx="1055" dy="517" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+>>>>>>> 0390302b48ba71ccbd2ce5b7f4961b63351e4baf
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -141,7 +145,11 @@
                         <mxPoint x="234.89999999999998" y="830" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
+<<<<<<< HEAD
                 <mxCell id="Otjnma4OZYYBcLAzFUDV-45" value="Regarde si tous les filtres son présents dans la recette" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+=======
+                <mxCell id="Otjnma4OZYYBcLAzFUDV-45" value="Regarde si tous les filtres sont présents dans la recette" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+>>>>>>> 0390302b48ba71ccbd2ce5b7f4961b63351e4baf
                     <mxGeometry x="264.9" y="700" width="90" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="Otjnma4OZYYBcLAzFUDV-52" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="Otjnma4OZYYBcLAzFUDV-48" target="Otjnma4OZYYBcLAzFUDV-51" edge="1">
