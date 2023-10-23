@@ -15,29 +15,29 @@ function emptyRecipes(){
 }
 
 function testAppliance(recipe, inputList){
-    return inputList.includes(recipe.appliance);
+    return inputList.includes(recipe.appliance) ? 1 : 0;
 }
 
 function testUstensils(recipe, inputList){
-    let isAnUstensil = false;
+    let nbInputsVerified = 0;
     for(let input of inputList){
         if(recipe.ustensils.includes(input)){
-            isAnUstensil=true;
+            nbInputsVerified++;
         }
     }
-    return isAnUstensil;
+    return nbInputsVerified;
 }
 
 function testIngredients(recipe, inputList){
-    let isAnIngredient = false;
+    let nbInputsVerified = 0;
     for(let ingredient of recipe.ingredients){
         if(inputList.includes(ingredient.ingredient)){
-            isAnIngredient=true
+            nbInputsVerified++;
         }
     }
-    return isAnIngredient;
+    return nbInputsVerified;
 }
 
 function tests(recipe, inputList){
-    return testAppliance(recipe, inputList) || testUstensils(recipe, inputList) || testIngredients(recipe, inputList);
+    return (testAppliance(recipe, inputList) + testUstensils(recipe, inputList) + testIngredients(recipe, inputList))==inputList.length;
 }
