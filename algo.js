@@ -37,10 +37,10 @@ function initDictionnary(){
     }
 }
 
-function testPresence(recipeToTest, arrayToTest) {
+function testPresence(element, arrayToTest) {
     let isInTheArray = false;
     for(let idToTest of arrayToTest){
-        if(recipeToTest==idToTest){
+        if(element==idToTest){
             isInTheArray=true;
         }
     }
@@ -55,13 +55,19 @@ function deleteRecipe(recipesToDisplay, recipeToTest){
     }
 }
 
+
+function emptyRecipes(){
+    document.getElementById("recipies").innerHTML="";
+}
+
 function research(inputList){
+    emptyRecipes();
     let recipesToDisplay=[];
     for (let i=0; i<inputList.length; i++){
         if (i==0){
-            recipesToDisplay = dictionnary.get(inputList[i]);
+            recipesToDisplay = [...dictionnary.get(inputList[i])];
         } else {
-            let arrayToTest = dictionnary.get(inputList[i]);
+            let arrayToTest = [...dictionnary.get(inputList[i])];
             for (let recipeToTest of recipesToDisplay){
                 if(!testPresence(recipeToTest, arrayToTest)){
                     deleteRecipe(recipesToDisplay, recipeToTest);
@@ -69,7 +75,15 @@ function research(inputList){
             }
         }
     }
-    console.log(recipesToDisplay);
+    let recipesCards="";
+    for(let recipe of recipes){
+        console.log(testPresence(recipe.id, recipesToDisplay));
+        if(testPresence(recipe.id, recipesToDisplay)){
+            console.log(recipe);
+            recipesCards+=createCardDOM(recipe);
+        }
+    }
+    document.getElementById("recipies").innerHTML=recipesCards;
 }
 
 function initAlgo(){
