@@ -77,9 +77,7 @@ function research(inputList){
     }
     let recipesCards="";
     for(let recipe of recipes){
-        console.log(testPresence(recipe.id, recipesToDisplay));
         if(testPresence(recipe.id, recipesToDisplay)){
-            console.log(recipe);
             recipesCards+=createCardDOM(recipe);
         }
     }
@@ -88,7 +86,6 @@ function research(inputList){
 
 function initAlgo(){
     initDictionnary();
-    console.log(dictionnary);
 }
 
 initAlgo();
