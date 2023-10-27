@@ -20,21 +20,21 @@ function testAppliance(recipe, inputList){
 
 function testUstensils(recipe, inputList){
     let nbInputsVerified = 0;
-    for(let input of inputList){
+    inputList.forEach(input=>{
         if(recipe.ustensils.includes(input)){
             nbInputsVerified++;
         }
-    }
+    })
     return nbInputsVerified;
 }
 
 function testIngredients(recipe, inputList){
     let nbInputsVerified = 0;
-    for(let ingredient of recipe.ingredients){
+    recipe.ingredients.forEach(ingredient => {
         if(inputList.includes(ingredient.ingredient)){
             nbInputsVerified++;
         }
-    }
+    })
     return nbInputsVerified;
 }
 
