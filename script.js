@@ -65,7 +65,7 @@ function createOptionDOM(array){
         let end = element.slice(1);
         formatedElement+=beginning.toUpperCase();
         formatedElement+=end;
-        DOM+=`<li><button data-value="${element}">${formatedElement}</button></li>`;
+        DOM+=`<li><button class="buttonSelect" data-value="${element}">${formatedElement}</button></li>`;
     })
     return DOM;
 }
