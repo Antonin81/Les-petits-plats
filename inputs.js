@@ -5,6 +5,8 @@ let appliancesSelect = document.getElementById("Appliances").parentElement.query
 let ustensilsInput = document.getElementById("Ustensils").parentElement.querySelector("input");
 let ustensilsSelect = document.getElementById("Ustensils").parentElement.querySelector(".option-list");
 
+let filtersList = [];
+
 function emptySelect(select){
     select.innerHTML="";
 }
@@ -26,13 +28,28 @@ appliancesInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, appliances
 ustensilsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, ustensilsList, ustensilsSelect);});
 
 function optionHandler(e){
-    console.log(e.target.getAttribute("data-value"));
+    if(filtersList.includes(e.target.getAttribute("data-value"))){
+        filtersList.splice(filtersList.indexOf(e.target.getAttribute("data-value")), 1);
+        document.querySelector(`[data-filter='${e.target.getAttribute("data-value")}']`).remove();     
+    } else {
+        filtersList.push(e.target.getAttribute("data-value"));
+        document.getElementById("filters").appendChild(createFilterDOM(e.target.getAttribute("data-value")));
+    }
+    createOptionHandlers();
 }
 
 function createOptionHandlers(){
     let selectButtons = document.querySelectorAll(".buttonSelect");
     selectButtons.forEach(selectButton => {
         selectButton.addEventListener("click",optionHandler);
+    })
+    let crossFilters = document.querySelectorAll(".filterCross");
+    crossFilters.forEach(crossFilter=>{
+        console.log(crossFilter);
+        crossFilter.addEventListener("click",(e)=>{
+            e.target.parentElement.remove();
+            filtersList.splice(filtersList.indexOf(e.target.parentElement.getAttribute("data-filter")),1);
+        });
     })
 }
 
