@@ -5,6 +5,9 @@ let appliancesSelect = document.getElementById("Appliances").parentElement.query
 let ustensilsInput = document.getElementById("Ustensils").parentElement.querySelector("input");
 let ustensilsSelect = document.getElementById("Ustensils").parentElement.querySelector(".option-list");
 
+let searchInput = document.querySelector(".header-form input");
+let searchButton = document.querySelector(".header-form button");
+
 let filtersList = [];
 
 function emptySelect(select){
@@ -26,6 +29,8 @@ function inputSelectHandler(e, list, select){
 ingredientsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, ingredientsList, ingredientsSelect);});
 appliancesInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, appliancesList, appliancesSelect);});
 ustensilsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, ustensilsList, ustensilsSelect);});
+
+searchButton.addEventListener("click", (e)=>{e.preventDefault(); searchFromText(e, searchInput.value);});
 
 function optionHandler(e){
     if(filtersList.includes(e.target.getAttribute("data-value"))){
