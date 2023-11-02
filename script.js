@@ -84,21 +84,6 @@ function createCountDOM(){
     document.getElementById("sort-section").querySelector("h2").innerHTML=`${recipesCount} recettes`;
 }
 
-function createFilterDOM(filter){
-    let filterElement = document.createElement("div");
-    filterElement.classList.add("filter");
-    filterElement.setAttribute("data-filter",filter);
-    let filterText = document.createElement("p");
-    filterText.textContent=filter;
-    let filterCross = document.createElement("span");
-    filterCross.classList.add("filterCross");
-    filterCross.textContent="X";
-
-    filterElement.appendChild(filterText);
-    filterElement.appendChild(filterCross);
-    return filterElement;
-}
-
 function closeAllDropdowns(){
     document.querySelectorAll(".select-button").forEach(select => {
         closeDropdown(select, select.nextElementSibling);

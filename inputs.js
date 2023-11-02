@@ -32,6 +32,23 @@ ustensilsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, ustensilsLi
 
 searchButton.addEventListener("click", (e)=>{e.preventDefault(); searchFromText(e, searchInput.value);});
 
+function createFilterDOM(filter){
+    let filterElement = document.createElement("div");
+    filterElement.classList.add("filter");
+    filterElement.setAttribute("data-filter",filter);
+    let filterText = document.createElement("p");
+    filterText.textContent=filter;
+    let filterCross = document.createElement("span");
+    filterCross.classList.add("filterCross");
+    let crossImg = document.createElement("img");
+    crossImg.setAttribute("src","./img/Cross.png")
+    filterCross.appendChild(crossImg);
+
+    filterElement.appendChild(filterText);
+    filterElement.appendChild(filterCross);
+    return filterElement;
+}
+
 function optionHandler(e){
     if(filtersList.includes(e.target.getAttribute("data-value"))){
         filtersList.splice(filtersList.indexOf(e.target.getAttribute("data-value")), 1);
@@ -50,10 +67,14 @@ function createOptionHandlers(){
     })
     let crossFilters = document.querySelectorAll(".filterCross");
     crossFilters.forEach(crossFilter=>{
-        console.log(crossFilter);
         crossFilter.addEventListener("click",(e)=>{
-            e.target.parentElement.remove();
-            filtersList.splice(filtersList.indexOf(e.target.parentElement.getAttribute("data-filter")),1);
+            
+            let filterElement=e.target;
+            while(!filterElement.classList.contains("filter")){
+                filterElement=filterElement.parentElement;
+            }
+            filterElement.remove();
+            filtersList.splice(filtersList.indexOf(filterElement.getAttribute("data-filter")),1);
         });
     })
 }
