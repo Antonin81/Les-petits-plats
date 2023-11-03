@@ -52,6 +52,18 @@ function optionHandler(e){
         document.getElementById("filters").appendChild(createFilterDOM(e.target.getAttribute("data-value")));
     }
     createOptionHandlers();
+    research(filtersList);
+}
+
+function filterHandler(e){
+    console.log(e.target.parentElement.parentElement);
+    let filterElement=e.target;
+    while(!filterElement.classList.contains("filter")){
+        filterElement=filterElement.parentElement;
+    }
+    filterElement.remove();
+    filtersList.splice(filtersList.indexOf(filterElement.getAttribute("data-filter")),1);
+    research(filtersList);
 }
 
 function createOptionHandlers(){
@@ -61,15 +73,7 @@ function createOptionHandlers(){
     })
     let crossFilters = document.querySelectorAll(".filterCross");
     crossFilters.forEach(crossFilter=>{
-        crossFilter.addEventListener("click",(e)=>{
-            
-            let filterElement=e.target;
-            while(!filterElement.classList.contains("filter")){
-                filterElement=filterElement.parentElement;
-            }
-            filterElement.remove();
-            filtersList.splice(filtersList.indexOf(filterElement.getAttribute("data-filter")),1);
-        });
+        crossFilter.addEventListener("click",filterHandler);
     })
 }
 
