@@ -14,11 +14,11 @@ function emptySelect(select){
     select.innerHTML="";
 }
 
-function inputSelectHandler(e, list, select){
+function inputSelectHandler(target, list, select){
     emptySelect(select);
     let tempoList=[];
     list.forEach(element => {
-        if(element.includes(e.target.value)){
+        if(element.includes(target.value)){
             tempoList.push(element);
         }
     });
@@ -82,9 +82,9 @@ function searchHandler(){
 }
 
 function initInputs(){
-    ingredientsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, ingredientsList, ingredientsSelect);});
-    appliancesInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, appliancesList, appliancesSelect);});
-    ustensilsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, ustensilsList, ustensilsSelect);});
+    ingredientsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e.target, ingredientsList, ingredientsSelect);});
+    appliancesInput.addEventListener("keyup", (e)=>{inputSelectHandler(e.target, appliancesList, appliancesSelect);});
+    ustensilsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e.target, ustensilsList, ustensilsSelect);});
 
     searchButton.addEventListener("click", (e)=>{e.preventDefault();});
     searchInput.addEventListener("keyup",searchHandler);
