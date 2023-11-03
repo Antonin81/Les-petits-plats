@@ -7,6 +7,7 @@ function createCardsDOM(recipesForDOM){
     ingredientsList = [];
     appliancesList = [];
     ustensilsList = [];
+    let recipesCount=0;
     
     recipesForDOM.forEach(recipe => {
         cardsDOM+=createCardDOM(recipe);
