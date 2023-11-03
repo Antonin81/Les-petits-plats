@@ -296,3 +296,7 @@ article h3{
     font-size: 14px;
     font-family: 'Manrope', sans-serif;
 }
+
+.filter img{
+    cursor: pointer;
+}
