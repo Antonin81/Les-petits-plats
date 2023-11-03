@@ -78,7 +78,7 @@ function createOptionHandlers(){
 }
 
 function searchHandler(){
-    searchFromText(searchInput.value.length, searchInput.value);
+    searchFromText(searchInput.value.length, searchInput.value, filtersList);
 }
 
 function initInputs(){
