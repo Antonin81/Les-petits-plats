@@ -77,14 +77,19 @@ function createOptionHandlers(){
     })
 }
 
-
+function searchHandler(e){
+    if(searchInput.value.length >= 3){
+        searchFromText(e, searchInput.value);
+    }
+}
 
 function initInputs(){
     ingredientsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, ingredientsList, ingredientsSelect);});
     appliancesInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, appliancesList, appliancesSelect);});
     ustensilsInput.addEventListener("keyup", (e)=>{inputSelectHandler(e, ustensilsList, ustensilsSelect);});
 
-    searchButton.addEventListener("click", (e)=>{e.preventDefault(); searchFromText(e, searchInput.value);});
+    searchButton.addEventListener("click", (e)=>{e.preventDefault();});
+    searchInput.addEventListener("keyup",searchHandler);
     createOptionHandlers();
 }
 
