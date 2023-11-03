@@ -10,6 +10,19 @@ function fromFiltersCreateCardsDOM(recipesForDOM, inputList){
 
     recipesForDOM.forEach(recipe => {
         if(tests(recipe, inputList)){
+            recipe.ingredients.forEach(ingredient=>{
+                if(!ingredientsList.includes(ingredient.ingredient)){
+                    ingredientsList.push(ingredient.ingredient);
+                }
+            });
+            recipe.ustensils.forEach(ustensil=>{
+                if(!ustensilsList.includes(ustensil)){
+                    ustensilsList.push(ustensil);
+                }
+            });
+            if(!appliancesList.includes(recipe.appliance)){
+                appliancesList.push(recipe.appliance);
+            }
             cardsDOM+=createCardDOM(recipe);
             recipesCount++;
         }        
@@ -17,6 +30,8 @@ function fromFiltersCreateCardsDOM(recipesForDOM, inputList){
 
     document.getElementById("recipies").innerHTML=cardsDOM;
     createCountDOM(recipesCount);
+    createSelectsDOM();
+    createOptionHandlers();
 }
 
 function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
@@ -44,6 +59,10 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
 
 function research(inputList){
     emptyRecipes();
+    emptySelects();
+    if(recipesToFilter.length==0){
+        recipesToFilter = [...recipes];
+    }
     fromFiltersCreateCardsDOM(recipesToFilter, inputList);
 }
 
@@ -54,7 +73,7 @@ function emptyRecipes(){
 function emptySelects(){
     document.querySelectorAll(".option-list").forEach(optionList=>{
         optionList.innerHTML="";
-    })
+    });
 }
 
 function testAppliance(recipe, inputList){
@@ -111,11 +130,15 @@ function searchFromText(stringLength, text, inputList){
         createOptionHandlers();
     } else {
         if(recipesToFilter.length<recipes.length){
-            createCardsDOM(recipes);
             recipesToFilter = [...recipes];
-            emptySelects();
-            createSelectsDOM();
-            createOptionHandlers();
+            if(inputList.length == 0){
+                emptySelects();
+                createCardsDOM(recipes);
+                createSelectsDOM();
+                createOptionHandlers();
+            } else {
+                research(inputList);
+            }
         }
     }
 }
