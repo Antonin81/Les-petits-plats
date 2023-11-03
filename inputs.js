@@ -77,10 +77,8 @@ function createOptionHandlers(){
     })
 }
 
-function searchHandler(e){
-    if(searchInput.value.length >= 3){
-        searchFromText(e, searchInput.value);
-    }
+function searchHandler(){
+    searchFromText(searchInput.value.length, searchInput.value);
 }
 
 function initInputs(){
