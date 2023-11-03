@@ -18,7 +18,7 @@ function inputSelectHandler(e, list, select){
     emptySelect(select);
     let tempoList=[];
     list.forEach(element => {
-        if(element.toLowerCase().includes(e.target.value)){
+        if(element.includes(e.target.value)){
             tempoList.push(element);
         }
     });
