@@ -35,18 +35,18 @@ function createCardDOM(recipe){
     </div>
         `;
 
-        if(!ingredientsList.includes(ingredient.ingredient.toLowerCase())){
-            ingredientsList.push(ingredient.ingredient.toLowerCase());
+        if(!ingredientsList.includes(ingredient.ingredient)){
+            ingredientsList.push(ingredient.ingredient);
         }
     });
 
-    if(!appliancesList.includes(recipe.appliance.toLowerCase())){
-        appliancesList.push(recipe.appliance.toLowerCase());
+    if(!appliancesList.includes(recipe.appliance)){
+        appliancesList.push(recipe.appliance);
     }
 
     recipe.ustensils.forEach(ustensil => {
-        if(!ustensilsList.includes(ustensil.toLowerCase())){
-            ustensilsList.push(ustensil.toLowerCase());
+        if(!ustensilsList.includes(ustensil)){
+            ustensilsList.push(ustensil);
         }
     });
 
@@ -60,12 +60,13 @@ function createCardDOM(recipe){
 function createOptionDOM(array){
     let DOM = "";
     array.forEach(element => {
-        let formatedElement = "";
-        let beginning = element.slice(0,1);
-        let end = element.slice(1);
-        formatedElement+=beginning.toUpperCase();
-        formatedElement+=end;
-        DOM+=`<li><button data-value="${element}">${formatedElement}</button></li>`;
+        // let formatedElement = "";
+        // let beginning = element.slice(0,1);
+        // let end = element.slice(1);
+        // formatedElement+=beginning.toUpperCase();
+        // formatedElement+=end;
+        // ATTENTION /!\ dans le data value ya un truc à revoir
+        DOM+=`<li><button class="buttonSelect" data-value="${element}">${element}</button></li>`;
     })
     return DOM;
 }
