@@ -32,6 +32,9 @@ function fromFiltersCreateCardsDOM(recipesForDOM, inputList){
     createCountDOM(recipesCount);
     createSelectsDOM();
     createOptionHandlers();
+    inputSelectHandler(ingredientsInput, ingredientsList, ingredientsSelect);
+    inputSelectHandler(appliancesInput, appliancesList, appliancesSelect);
+    inputSelectHandler(ustensilsInput, ustensilsList, ustensilsSelect);
 }
 
 function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
@@ -46,6 +49,19 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
     recipesForDOM.forEach(recipe => {
         if(testText(recipe, text)){
             if(inputList.length == 0 || tests(recipe, inputList)){
+                recipe.ingredients.forEach(ingredient=>{
+                    if(!ingredientsList.includes(ingredient.ingredient)){
+                        ingredientsList.push(ingredient.ingredient);
+                    }
+                });
+                recipe.ustensils.forEach(ustensil=>{
+                    if(!ustensilsList.includes(ustensil)){
+                        ustensilsList.push(ustensil);
+                    }
+                });
+                if(!appliancesList.includes(recipe.appliance)){
+                    appliancesList.push(recipe.appliance);
+                }
                 cardsDOM+=createCardDOM(recipe);
                 recipesCount++;
             }
@@ -128,6 +144,9 @@ function searchFromText(stringLength, text, inputList){
         emptySelects();
         createSelectsDOM();
         createOptionHandlers();
+        inputSelectHandler(ingredientsInput, ingredientsList, ingredientsSelect);
+        inputSelectHandler(appliancesInput, appliancesList, appliancesSelect);
+        inputSelectHandler(ustensilsInput, ustensilsList, ustensilsSelect);
     } else {
         if(recipesToFilter.length<recipes.length){
             recipesToFilter = [...recipes];
@@ -136,6 +155,9 @@ function searchFromText(stringLength, text, inputList){
                 createCardsDOM(recipes);
                 createSelectsDOM();
                 createOptionHandlers();
+                inputSelectHandler(ingredientsInput, ingredientsList, ingredientsSelect);
+                inputSelectHandler(appliancesInput, appliancesList, appliancesSelect);
+                inputSelectHandler(ustensilsInput, ustensilsList, ustensilsSelect);
             } else {
                 research(inputList);
             }
