@@ -1,12 +1,15 @@
 function research(inputList){
     emptyRecipes();
     let recipesCards="";
+    let count=0;
     recipes.forEach(recipe => {
         if(tests(recipe, inputList)){
             recipesCards+=createCardDOM(recipe);
+            count++;
         }
     });
     document.getElementById("recipies").innerHTML=recipesCards;
+    createCountDOM(count);
 }
 
 function emptyRecipes(){
