@@ -40,6 +40,38 @@ function testIngredients(recipe, inputList){
     return nbInputsVerified;
 }
 
+function testText(recipe, text){
+
+    if(recipe.name.includes(text)){
+        return true;
+    }
+
+    if(recipe.description.includes(text)){
+        return true;
+    }
+
+    let isInIngredients=false;
+
+    recipe.ingredients.forEach(ingredient => {
+        if(ingredient.ingredient.includes(text)){
+            isInIngredients = true;
+        }
+    });
+
+    return isInIngredients;
+
+}
+
+function searchFromText(e, text){
+    recipes.forEach(recipe => {
+        if(testText(recipe, text)){
+            // recipesCards+=createCardDOM(recipe);
+            // count++;
+            console.log(recipe);
+        }
+    });
+}
+
 function tests(recipe, inputList){
     return (testAppliance(recipe, inputList) + testUstensils(recipe, inputList) + testIngredients(recipe, inputList))==inputList.length;
 }
