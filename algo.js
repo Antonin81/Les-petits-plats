@@ -19,7 +19,7 @@ function fromFiltersCreateCardsDOM(recipesForDOM, inputList){
     createCountDOM(recipesCount);
 }
 
-function fromSearchCreateCardsDOM(recipesForDOM, text){
+function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
     let cardsDOM = "";
     ingredientsList = [];
     appliancesList = [];
@@ -30,9 +30,11 @@ function fromSearchCreateCardsDOM(recipesForDOM, text){
 
     recipesForDOM.forEach(recipe => {
         if(testText(recipe, text)){
-            cardsDOM+=createCardDOM(recipe);
+            if(inputList.length == 0 || tests(recipe, inputList)){
+                cardsDOM+=createCardDOM(recipe);
+                recipesCount++;
+            }
             recipesToFilter.push(recipe);
-            recipesCount++;
         }        
     });
 
@@ -47,6 +49,12 @@ function research(inputList){
 
 function emptyRecipes(){
     document.getElementById("recipies").innerHTML="";
+}
+
+function emptySelects(){
+    document.querySelectorAll(".option-list").forEach(optionList=>{
+        optionList.innerHTML="";
+    })
 }
 
 function testAppliance(recipe, inputList){
@@ -95,8 +103,21 @@ function testText(recipe, text){
 
 }
 
-function searchFromText(e, text){
-    fromSearchCreateCardsDOM(recipes, text);
+function searchFromText(stringLength, text, inputList){
+    if (stringLength>=3){
+        fromSearchCreateCardsDOM(recipes, text, inputList);
+        emptySelects();
+        createSelectsDOM();
+        createOptionHandlers();
+    } else {
+        if(recipesToFilter.length<recipes.length){
+            createCardsDOM(recipes);
+            recipesToFilter = [...recipes];
+            emptySelects();
+            createSelectsDOM();
+            createOptionHandlers();
+        }
+    }
 }
 
 function tests(recipe, inputList){
