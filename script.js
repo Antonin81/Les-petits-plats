@@ -3,9 +3,12 @@ let appliancesList = [];
 let ustensilsList = [];
 let recipesCount = 0;
 
-function createCardsDOM(){
+function createCardsDOM(recipesForDOM){
     let cardsDOM = "";
-    recipes.forEach(recipe => {
+    ingredientsList = [];
+    appliancesList = [];
+    ustensilsList = [];
+    recipesForDOM.forEach(recipe => {
         cardsDOM+=createCardDOM(recipe);
         recipesCount++;
     });
@@ -114,7 +117,7 @@ function toggleDropdown(button){
 }
 
 function init(){
-    createCardsDOM();
+    createCardsDOM(recipes);
     createSelectsDOM();
     createCountDOM(recipesCount);
     document.querySelectorAll(".select-button").forEach(button=>{
