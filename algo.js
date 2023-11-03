@@ -1,3 +1,5 @@
+let recipesToFilter = [];
+
 function research(inputList){
     emptyRecipes();
     let recipesCards="";
@@ -68,8 +70,13 @@ function searchFromText(e, text){
             // recipesCards+=createCardDOM(recipe);
             // count++;
             console.log(recipe);
+            recipesToFilter.push(recipe);
         }
     });
+    console.log(recipesToFilter);
+    ingredientsList = [];
+    appliancesList = [];
+    ustensilsList = [];
 }
 
 function tests(recipe, inputList){
