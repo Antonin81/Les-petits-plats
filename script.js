@@ -1,18 +1,19 @@
 let ingredientsList = [];
 let appliancesList = [];
 let ustensilsList = [];
-let recipesCount = 0;
 
 function createCardsDOM(recipesForDOM){
     let cardsDOM = "";
     ingredientsList = [];
     appliancesList = [];
     ustensilsList = [];
+    
     recipesForDOM.forEach(recipe => {
         cardsDOM+=createCardDOM(recipe);
         recipesCount++;
     });
     document.getElementById("recipies").innerHTML=cardsDOM;
+    createCountDOM(recipesCount);
 }
 
 function createCardDOM(recipe){
@@ -119,7 +120,6 @@ function toggleDropdown(button){
 function init(){
     createCardsDOM(recipes);
     createSelectsDOM();
-    createCountDOM(recipesCount);
     document.querySelectorAll(".select-button").forEach(button=>{
         button.addEventListener("click",()=>{
             toggleDropdown(button);
