@@ -80,8 +80,8 @@ function createSelectsDOM(){
     ustensilsSelect.innerHTML=createOptionDOM(ustensilsList);
 }
 
-function createCountDOM(){
-    document.getElementById("sort-section").querySelector("h2").innerHTML=`${recipesCount} recettes`;
+function createCountDOM(count){
+    document.getElementById("sort-section").querySelector("h2").innerHTML=`${count} recettes`;
 }
 
 function closeAllDropdowns(){
@@ -116,7 +116,7 @@ function toggleDropdown(button){
 function init(){
     createCardsDOM();
     createSelectsDOM();
-    createCountDOM();
+    createCountDOM(recipesCount);
     document.querySelectorAll(".select-button").forEach(button=>{
         button.addEventListener("click",()=>{
             toggleDropdown(button);
