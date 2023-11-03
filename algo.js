@@ -3,7 +3,6 @@ function research(inputList){
     let recipesCards="";
     recipes.forEach(recipe => {
         if(tests(recipe, inputList)){
-            console.log(recipe);
             recipesCards+=createCardDOM(recipe);
         }
     });
