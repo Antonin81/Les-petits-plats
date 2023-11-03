@@ -1,17 +1,48 @@
 let recipesToFilter = [];
 
+function fromFiltersCreateCardsDOM(recipesForDOM, inputList){
+    let cardsDOM = "";
+    ingredientsList = [];
+    appliancesList = [];
+    ustensilsList = [];
+    
+    let recipesCount = 0;
+
+    recipesForDOM.forEach(recipe => {
+        if(tests(recipe, inputList)){
+            cardsDOM+=createCardDOM(recipe);
+            recipesCount++;
+        }        
+    });
+
+    document.getElementById("recipies").innerHTML=cardsDOM;
+    createCountDOM(recipesCount);
+}
+
+function fromSearchCreateCardsDOM(recipesForDOM, text){
+    let cardsDOM = "";
+    ingredientsList = [];
+    appliancesList = [];
+    ustensilsList = [];
+    recipesToFilter = [];
+    
+    let recipesCount = 0;
+
+    recipesForDOM.forEach(recipe => {
+        if(testText(recipe, text)){
+            cardsDOM+=createCardDOM(recipe);
+            recipesToFilter.push(recipe);
+            recipesCount++;
+        }        
+    });
+
+    document.getElementById("recipies").innerHTML=cardsDOM;
+    createCountDOM(recipesCount);
+}
+
 function research(inputList){
     emptyRecipes();
-    let recipesCards="";
-    let count=0;
-    recipes.forEach(recipe => {
-        if(tests(recipe, inputList)){
-            recipesCards+=createCardDOM(recipe);
-            count++;
-        }
-    });
-    document.getElementById("recipies").innerHTML=recipesCards;
-    createCountDOM(count);
+    fromFiltersCreateCardsDOM(recipesToFilter, inputList);
 }
 
 function emptyRecipes(){
@@ -65,18 +96,7 @@ function testText(recipe, text){
 }
 
 function searchFromText(e, text){
-    recipes.forEach(recipe => {
-        if(testText(recipe, text)){
-            // recipesCards+=createCardDOM(recipe);
-            // count++;
-            console.log(recipe);
-            recipesToFilter.push(recipe);
-        }
-    });
-    console.log(recipesToFilter);
-    ingredientsList = [];
-    appliancesList = [];
-    ustensilsList = [];
+    fromSearchCreateCardsDOM(recipes, text);
 }
 
 function tests(recipe, inputList){
