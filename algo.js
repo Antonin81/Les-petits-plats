@@ -78,7 +78,6 @@ function buildOptionLists(recipe){
 
 //creates the cards DOM according to the selected filters
 function fromFiltersCreateCardsDOM(recipesForDOM, recipesToDisplay){
-
     let cardsDOM = "";
     resetOptionLists();
     let recipesCount = 0;
@@ -101,6 +100,12 @@ function fromFiltersCreateCardsDOM(recipesForDOM, recipesToDisplay){
 
 function searchRecipesToDisplay(inputList){
     let recipesToDisplay=[];
+    if(inputList.length == 0){
+        for(let i=0; i<recipes.length; i++){
+            recipesToDisplay.push(i+1);
+        }
+        return recipesToDisplay;
+    }
     for (let i=0; i<inputList.length; i++){
         if (i==0){
             recipesToDisplay = [...dictionnary.get(inputList[i])];
@@ -117,9 +122,10 @@ function searchRecipesToDisplay(inputList){
 }
 
 function research(inputList){
+    console.log(dictionnary);
     emptyRecipes();
     let recipesToDisplay=searchRecipesToDisplay(inputList);
-    fromFiltersCreateCardsDOM(dictionnary, recipesToDisplay);
+    fromFiltersCreateCardsDOM(recipes, recipesToDisplay);
 }
 
 //empties the options lists of the selects' DOM
@@ -200,7 +206,7 @@ function searchFromText(stringLength, text, inputList){
     if (stringLength>=3){
         fromSearchCreateCardsDOM(recipes, text, inputList);
     } else {
-        initDictionnary(recipe);
+        initDictionnary(recipes);
         //activates only if there was already a custom recipes display
         if(dictionnary.size<recipes.length){
             emptySelects();
@@ -209,6 +215,7 @@ function searchFromText(stringLength, text, inputList){
             createOptionHandlers();
             researchInSelects();
         } else {
+            console.log(dictionnary.size);
             research(inputList);
         }
     }
