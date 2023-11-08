@@ -1,60 +1,5 @@
 let dictionnary=new Map();
-
-function initIngredients(recipe){
-    for (let ingredient of recipe.ingredients){
-        ingredientName=ingredient.ingredient;
-        if(!dictionnary.get(ingredientName)){
-            dictionnary.set(ingredientName, [recipe.id]);
-        } else {
-            dictionnary.get(ingredientName).push(recipe.id);
-        }
-    }
-}
-
-function initAppliance(recipe){
-    if(!dictionnary.get(recipe.appliance)){
-        dictionnary.set(recipe.appliance, [recipe.id]);
-    } else {
-        dictionnary.get(recipe.appliance).push(recipe.id);
-    }
-}
-
-function initUstensils(recipe){
-    for (let ustensil of recipe.ustensils){
-        if(!dictionnary.get(ustensil)){
-            dictionnary.set(ustensil, [recipe.id]);
-        } else {
-            dictionnary.get(ustensil).push(recipe.id);
-        }
-    }
-}
-
-function initDictionnary(recipeList){
-    for (let recipe of recipeList){
-        initIngredients(recipe);
-        initAppliance(recipe);
-        initUstensils(recipe);
-    }
-}
-
-function testPresence(element, arrayToTest) {
-    let isInTheArray = false;
-    for(let idToTest of arrayToTest){
-        if(element==idToTest){
-            isInTheArray=true;
-        }
-    }
-    return isInTheArray;
-}
-
-function deleteRecipe(recipesToDisplay, recipeToTest){
-    for (let i=0; i<recipesToDisplay.length; i++){
-        if(recipesToDisplay[i]==recipeToTest){
-            recipesToDisplay.splice(i,1);
-        }
-    }
-}
-
+let fullDictionnary=new Map();
 
 function emptyRecipes(){
     document.getElementById("recipies").innerHTML="";
@@ -98,13 +43,18 @@ function fromFiltersCreateCardsDOM(recipesForDOM, recipesToDisplay){
     researchInSelects();
 }
 
+
 function searchRecipesToDisplay(inputList){
     let recipesToDisplay=[];
     if(inputList.length == 0){
-        for(let i=0; i<recipes.length; i++){
-            recipesToDisplay.push(i+1);
+        if(equalsMap(dictionnary, fullDictionnary)){
+            for(let i=0; i<recipes.length; i++){
+                recipesToDisplay.push(i+1);
+            }
+            return recipesToDisplay;
+        } else {
+            return allRecipesInDictionnary(dictionnary);
         }
-        return recipesToDisplay;
     }
     for (let i=0; i<inputList.length; i++){
         if (i==0){
@@ -122,7 +72,6 @@ function searchRecipesToDisplay(inputList){
 }
 
 function research(inputList){
-    console.log(dictionnary);
     emptyRecipes();
     let recipesToDisplay=searchRecipesToDisplay(inputList);
     fromFiltersCreateCardsDOM(recipes, recipesToDisplay);
@@ -153,10 +102,8 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
 
     let cardsDOM = "";
     resetOptionLists();
-    dictionnary = new Map();
     let recipesCount = 0;
     let recipesToPutInDictionnary = [];
-
     for(let recipe of recipesForDOM){
         if(testText(recipe, text)){
             if(inputList.length == 0 || testPresence(recipe.id, searchRecipesToDisplay(inputList))){
@@ -167,8 +114,8 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
             recipesToPutInDictionnary.push(recipe);
         } 
     }
-
-    initDictionnary(recipesToPutInDictionnary);
+    dictionnary = new Map();
+    initDictionnary(dictionnary, recipesToPutInDictionnary);
 
     document.getElementById("recipies").innerHTML=cardsDOM;
     createCountDOM(recipesCount);
@@ -206,23 +153,28 @@ function searchFromText(stringLength, text, inputList){
     if (stringLength>=3){
         fromSearchCreateCardsDOM(recipes, text, inputList);
     } else {
-        initDictionnary(recipes);
         //activates only if there was already a custom recipes display
-        if(dictionnary.size<recipes.length){
+        if(inputList.length == 0){
+            dictionnary= new Map();
+            initDictionnary(dictionnary, recipes);
             emptySelects();
             createCardsDOM(recipes);
             createSelectsDOM();
             createOptionHandlers();
             researchInSelects();
-        } else {
-            console.log(dictionnary.size);
+        } else if(inputList.length > 0) {
+            dictionnary= new Map();
+            initDictionnary(dictionnary, recipes);
             research(inputList);
         }
     }
 }
 
 function initAlgo(){
-    initDictionnary(recipes);
+    initDictionnary(dictionnary, recipes);
+    initDictionnary(fullDictionnary, recipes);
 }
 
 initAlgo();
+
+//RECUPERER LE NOMBRE DE RECETTES AFFICHEES POUR SAVOIR QUAND LANCER LA RECHERCHE ET DONC OPTIMISER ?
