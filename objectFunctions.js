@@ -38,7 +38,7 @@ function allRecipesInDictionnary(map){
 
 function initIngredients(dictionnaryToFill, recipe){
     for (let ingredient of recipe.ingredients){
-        ingredientName=ingredient.ingredient;
+        ingredientName=ingredient.ingredient.toLowerCase();
         if(!dictionnaryToFill.get(ingredientName)){
             dictionnaryToFill.set(ingredientName, [recipe.id]);
         } else {
@@ -48,19 +48,21 @@ function initIngredients(dictionnaryToFill, recipe){
 }
 
 function initAppliance(dictionnaryToFill, recipe){
-    if(!dictionnaryToFill.get(recipe.appliance)){
-        dictionnaryToFill.set(recipe.appliance, [recipe.id]);
+    let applianceName = recipe.appliance.toLowerCase();
+    if(!dictionnaryToFill.get(applianceName)){
+        dictionnaryToFill.set(applianceName, [recipe.id]);
     } else {
-        dictionnaryToFill.get(recipe.appliance).push(recipe.id);
+        dictionnaryToFill.get(applianceName).push(recipe.id);
     }
 }
 
 function initUstensils(dictionnaryToFill, recipe){
     for (let ustensil of recipe.ustensils){
-        if(!dictionnaryToFill.get(ustensil)){
-            dictionnaryToFill.set(ustensil, [recipe.id]);
+        let ustensilName = ustensil.toLowerCase();
+        if(!dictionnaryToFill.get(ustensilName)){
+            dictionnaryToFill.set(ustensilName, [recipe.id]);
         } else {
-            dictionnaryToFill.get(ustensil).push(recipe.id);
+            dictionnaryToFill.get(ustensilName).push(recipe.id);
         }
     }
 }

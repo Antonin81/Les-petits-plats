@@ -7,17 +7,17 @@ function emptyRecipes(){
 
 function buildOptionLists(recipe){
     recipe.ingredients.forEach(ingredient=>{
-        if(!ingredientsList.includes(ingredient.ingredient)){
-            ingredientsList.push(ingredient.ingredient);
+        if(!ingredientsList.includes(ingredient.ingredient.toLowerCase())){
+            ingredientsList.push(ingredient.ingredient.toLowerCase());
         }
     });
     recipe.ustensils.forEach(ustensil=>{
-        if(!ustensilsList.includes(ustensil)){
-            ustensilsList.push(ustensil);
+        if(!ustensilsList.includes(ustensil.toLowerCase())){
+            ustensilsList.push(ustensil.toLowerCase());
         }
     });
-    if(!appliancesList.includes(recipe.appliance)){
-        appliancesList.push(recipe.appliance);
+    if(!appliancesList.includes(recipe.appliance.toLowerCase())){
+        appliancesList.push(recipe.appliance.toLowerCase());
     }
 }
 
