@@ -1,5 +1,5 @@
 //list of recipes resulting of a search without using the filters
-let recipesToFilter = [];
+let recipesToFilter = [...recipes];
 
 function resetOptionLists(){
     ingredientsList = [];
@@ -48,6 +48,10 @@ function fromFiltersCreateCardsDOM(recipesForDOM, inputList){
         }        
     });
 
+    if(recipesCount==0){
+        showAbsenceMessage();
+    }
+
     document.getElementById("recipies").innerHTML=cardsDOM;
     createCountDOM(recipesCount);
     emptySelects();
@@ -75,6 +79,10 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
         }        
     });
 
+    if(recipesCount==0){
+        showAbsenceMessage();
+    }
+
     document.getElementById("recipies").innerHTML=cardsDOM;
     createCountDOM(recipesCount);
     emptySelects();
@@ -86,9 +94,7 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
 //Researches recipes from a list of filters
 function research(inputList){
     emptyRecipes();
-    if(recipesToFilter.length==0){
-        recipesToFilter = [...recipes];
-    }
+    unShowAbsenceMessage();
     fromFiltersCreateCardsDOM(recipesToFilter, inputList);
 }
 
@@ -153,6 +159,7 @@ function testText(recipe, text){
 //Researches recipes from a string
 function searchFromText(stringLength, text, inputList){
     //applies a search algorithm only if there are 3 letters minimum
+    unShowAbsenceMessage();
     if (stringLength>=3){
         fromSearchCreateCardsDOM(recipes, text, inputList);
     } else {
