@@ -302,3 +302,10 @@ article h3{
 .filter img{
     cursor: pointer;
 }
+
+#no-recipes-message{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 15px 0 15px 0;
+    display: none;
+}
