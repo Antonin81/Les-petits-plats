@@ -18,7 +18,7 @@ function inputSelectHandler(target, list, select){
     emptySelect(select);
     let tempoList=[];
     list.forEach(element => {
-        if(element.includes(target.value)){
+        if(element.includes(target.value.toLowerCase())){
             tempoList.push(element);
         }
     });
@@ -78,7 +78,7 @@ function createOptionHandlers(){
 }
 
 function searchHandler(){
-    searchFromText(searchInput.value.length, searchInput.value, filtersList);
+    searchFromText(searchInput.value.length, searchInput.value.toLowerCase(), filtersList);
 }
 
 function initInputs(){
