@@ -35,23 +35,23 @@ function createCardDOM(recipe){
 
     recipe.ingredients.forEach(ingredient => {
         DOM+=`<div>
-        <p class="ingredient-name">${ingredient.ingredient}</p>
+        <p class="ingredient-name">${formatString(ingredient.ingredient)}</p>
         <p class="ingredient-quantity">${ingredient.quantity!=undefined ? ingredient.quantity : ""} ${ingredient.unit!=undefined ? ingredient.unit : ""}</p>
     </div>
         `;
 
-        if(!ingredientsList.includes(ingredient.ingredient)){
-            ingredientsList.push(ingredient.ingredient);
+        if(!ingredientsList.includes(ingredient.ingredient.toLowerCase())){
+            ingredientsList.push(ingredient.ingredient.toLowerCase());
         }
     });
 
-    if(!appliancesList.includes(recipe.appliance)){
-        appliancesList.push(recipe.appliance);
+    if(!appliancesList.includes(recipe.appliance.toLowerCase())){
+        appliancesList.push(recipe.appliance.toLowerCase());
     }
 
     recipe.ustensils.forEach(ustensil => {
-        if(!ustensilsList.includes(ustensil)){
-            ustensilsList.push(ustensil);
+        if(!ustensilsList.includes(ustensil.toLowerCase())){
+            ustensilsList.push(ustensil.toLowerCase());
         }
     });
 
@@ -62,16 +62,20 @@ function createCardDOM(recipe){
     return DOM;
 }
 
+function formatString(string){
+    let lowerString=string.toLowerCase();
+    let formatedString = "";
+    let beginning = lowerString.slice(0,1);
+    let end = lowerString.slice(1);
+    formatedString+=beginning.toUpperCase();
+    formatedString+=end;
+    return formatedString
+}
+
 function createOptionDOM(array){
     let DOM = "";
     array.forEach(element => {
-        // let formatedElement = "";
-        // let beginning = element.slice(0,1);
-        // let end = element.slice(1);
-        // formatedElement+=beginning.toUpperCase();
-        // formatedElement+=end;
-        // ATTENTION /!\ dans le data value ya un truc à revoir
-        DOM+=`<li><button class="buttonSelect" data-value="${element}">${element}</button></li>`;
+        DOM+=`<li><button class="buttonSelect" data-value="${element}">${formatString(element)}</button></li>`;
     })
     return DOM;
 }
