@@ -110,10 +110,12 @@ function emptySelects(){
     });
 }
 
+//tests the presence of the appliances of the list of filters in a recipe
 function testAppliance(recipe, inputList){
     return inputList.includes(recipe.appliance.toLowerCase()) ? 1 : 0;
 }
 
+//tests the presence of the ustensils of the list of filters in a recipe
 function testUstensils(recipe, inputList){
     let nbInputsVerified = 0;
     recipe.ustensils.forEach(ustensil=>{
@@ -124,6 +126,7 @@ function testUstensils(recipe, inputList){
     return nbInputsVerified;
 }
 
+//tests the presence of the ingredients of the list of filters in a recipe
 function testIngredients(recipe, inputList){
     let nbInputsVerified = 0;
     recipe.ingredients.forEach(ingredient => {
@@ -134,6 +137,7 @@ function testIngredients(recipe, inputList){
     return nbInputsVerified;
 }
 
+//tests the presence of a string in the title, the description or the ingredients of a recipe
 function testText(recipe, text){
 
     if(recipe.name.includes(text)){
@@ -181,6 +185,7 @@ function searchFromText(stringLength, text, inputList){
     }
 }
 
+//launches all the tests by filters
 function tests(recipe, inputList){
     return (testAppliance(recipe, inputList) + testUstensils(recipe, inputList) + testIngredients(recipe, inputList))==inputList.length;
 }
