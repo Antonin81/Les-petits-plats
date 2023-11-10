@@ -35,6 +35,10 @@ function fromFiltersCreateCardsDOM(recipesForDOM, recipesToDisplay){
         }  
     }
 
+    if(recipesCount==0){
+        showAbsenceMessage();
+    }
+
     document.getElementById("recipies").innerHTML=cardsDOM;
     createCountDOM(recipesCount);
     emptySelects();
@@ -73,6 +77,7 @@ function searchRecipesToDisplay(inputList){
 
 function research(inputList){
     emptyRecipes();
+    unShowAbsenceMessage();
     let recipesToDisplay=searchRecipesToDisplay(inputList);
     fromFiltersCreateCardsDOM(recipes, recipesToDisplay);
 }
@@ -114,6 +119,11 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
             recipesToPutInDictionnary.push(recipe);
         } 
     }
+
+    if(recipesCount==0){
+        showAbsenceMessage();
+    }
+
     dictionnary = new Map();
     initDictionnary(dictionnary, recipesToPutInDictionnary);
 
@@ -151,16 +161,15 @@ function testText(recipe, text){
 function searchFromText(stringLength, text, inputList){
     //applies a search algorithm only if there are 3 letters minimum
     if (stringLength>=3){
+        unShowAbsenceMessage();
         fromSearchCreateCardsDOM(recipes, text, inputList);
     } else {
         //activates only if there was already a custom recipes display
-        console.log(dictionnary);
-        console.log(fullDictionnary);
         if(!equalsMap(dictionnary, fullDictionnary)){
-            console.log("!!!!!!!!!!!! recherche faite !!!!!!!!!!!!");
             dictionnary = new Map();
             initDictionnary(dictionnary, recipes);
             if(inputList.length == 0){
+                unShowAbsenceMessage();
                 emptySelects();
                 createCardsDOM(recipes);
                 createSelectsDOM();
