@@ -31,7 +31,7 @@ function createFilterDOM(filter){
     filterElement.classList.add("filter");
     filterElement.setAttribute("data-filter",filter);
     let filterText = document.createElement("p");
-    filterText.textContent=filter;
+    filterText.textContent=formatString(filter);
     let filterCross = document.createElement("span");
     filterCross.classList.add("filterCross");
     let crossImg = document.createElement("img");
