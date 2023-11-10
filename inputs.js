@@ -56,7 +56,6 @@ function optionHandler(e){
 }
 
 function filterHandler(e){
-    console.log(e.target.parentElement.parentElement);
     let filterElement=e.target;
     while(!filterElement.classList.contains("filter")){
         filterElement=filterElement.parentElement;
@@ -78,7 +77,7 @@ function createOptionHandlers(){
 }
 
 function searchHandler(){
-    searchFromText(searchInput.value.length, searchInput.value.toLowerCase(), filtersList);
+    searchFromText(searchInput.value.length, searchInput.value, filtersList);
 }
 
 function initInputs(){
