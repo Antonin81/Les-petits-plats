@@ -10,17 +10,17 @@ function resetOptionLists(){
 //fills the list of options selectable from the displayed recipes
 function buildOptionLists(recipe){
     recipe.ingredients.forEach(ingredient=>{
-        if(!ingredientsList.includes(ingredient.ingredient)){
-            ingredientsList.push(ingredient.ingredient);
+        if(!ingredientsList.includes(ingredient.ingredient.toLowerCase())){
+            ingredientsList.push(ingredient.ingredient.toLowerCase());
         }
     });
     recipe.ustensils.forEach(ustensil=>{
-        if(!ustensilsList.includes(ustensil)){
-            ustensilsList.push(ustensil);
+        if(!ustensilsList.includes(ustensil.toLowerCase())){
+            ustensilsList.push(ustensil.toLowerCase());
         }
     });
-    if(!appliancesList.includes(recipe.appliance)){
-        appliancesList.push(recipe.appliance);
+    if(!appliancesList.includes(recipe.appliance.toLowerCase())){
+        appliancesList.push(recipe.appliance.toLowerCase());
     }
 }
 
@@ -111,13 +111,13 @@ function emptySelects(){
 }
 
 function testAppliance(recipe, inputList){
-    return inputList.includes(recipe.appliance) ? 1 : 0;
+    return inputList.includes(recipe.appliance.toLowerCase()) ? 1 : 0;
 }
 
 function testUstensils(recipe, inputList){
     let nbInputsVerified = 0;
-    inputList.forEach(input=>{
-        if(recipe.ustensils.includes(input)){
+    recipe.ustensils.forEach(ustensil=>{
+        if(inputList.includes(ustensil.toLowerCase())){
             nbInputsVerified++;
         }
     })
@@ -127,7 +127,7 @@ function testUstensils(recipe, inputList){
 function testIngredients(recipe, inputList){
     let nbInputsVerified = 0;
     recipe.ingredients.forEach(ingredient => {
-        if(inputList.includes(ingredient.ingredient)){
+        if(inputList.includes(ingredient.ingredient.toLowerCase())){
             nbInputsVerified++;
         }
     })
