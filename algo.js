@@ -159,8 +159,8 @@ function testText(recipe, text){
 //Researches recipes from a string
 function searchFromText(stringLength, text, inputList){
     //applies a search algorithm only if there are 3 letters minimum
-    unShowAbsenceMessage();
     if (stringLength>=3){
+        unShowAbsenceMessage();
         fromSearchCreateCardsDOM(recipes, text, inputList);
     } else {
         //activates only if there was already a custom recipes display
@@ -168,6 +168,7 @@ function searchFromText(stringLength, text, inputList){
             recipesToFilter = [...recipes];
             //displays all the recipes if not any filters are applied, else applies the filters on all recipes
             if(inputList.length == 0){
+                unShowAbsenceMessage();
                 emptySelects();
                 createCardsDOM(recipes);
                 createSelectsDOM();
