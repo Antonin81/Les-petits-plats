@@ -11,6 +11,9 @@ function equalsArray(arr1, arr2){
 }
 
 function equalsMap(map1, map2){
+    if(map1.size!=map2.size){
+        return false;
+    }
     for(let [key, val] of map1){
         if(!equalsArray(val, map2.get(key))){
             return false;

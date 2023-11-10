@@ -154,18 +154,21 @@ function searchFromText(stringLength, text, inputList){
         fromSearchCreateCardsDOM(recipes, text, inputList);
     } else {
         //activates only if there was already a custom recipes display
-        if(inputList.length == 0){
-            dictionnary= new Map();
+        console.log(dictionnary);
+        console.log(fullDictionnary);
+        if(!equalsMap(dictionnary, fullDictionnary)){
+            console.log("!!!!!!!!!!!! recherche faite !!!!!!!!!!!!");
+            dictionnary = new Map();
             initDictionnary(dictionnary, recipes);
-            emptySelects();
-            createCardsDOM(recipes);
-            createSelectsDOM();
-            createOptionHandlers();
-            researchInSelects();
-        } else if(inputList.length > 0) {
-            dictionnary= new Map();
-            initDictionnary(dictionnary, recipes);
-            research(inputList);
+            if(inputList.length == 0){
+                emptySelects();
+                createCardsDOM(recipes);
+                createSelectsDOM();
+                createOptionHandlers();
+                researchInSelects();
+            } else {
+                research(inputList);
+            }
         }
     }
 }
