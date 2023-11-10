@@ -18,7 +18,7 @@ function inputSelectHandler(target, list, select){
     emptySelect(select);
     let tempoList=[];
     list.forEach(element => {
-        if(element.includes(target.value)){
+        if(element.includes(target.value.toLowerCase())){
             tempoList.push(element);
         }
     });
@@ -31,7 +31,7 @@ function createFilterDOM(filter){
     filterElement.classList.add("filter");
     filterElement.setAttribute("data-filter",filter);
     let filterText = document.createElement("p");
-    filterText.textContent=filter;
+    filterText.textContent=formatString(filter);
     let filterCross = document.createElement("span");
     filterCross.classList.add("filterCross");
     let crossImg = document.createElement("img");
@@ -56,7 +56,6 @@ function optionHandler(e){
 }
 
 function filterHandler(e){
-    console.log(e.target.parentElement.parentElement);
     let filterElement=e.target;
     while(!filterElement.classList.contains("filter")){
         filterElement=filterElement.parentElement;
