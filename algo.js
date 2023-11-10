@@ -6,18 +6,21 @@ function emptyRecipes(){
 }
 
 function buildOptionLists(recipe){
-    recipe.ingredients.forEach(ingredient=>{
-        if(!ingredientsList.includes(ingredient.ingredient.toLowerCase())){
-            ingredientsList.push(ingredient.ingredient.toLowerCase());
+    for(let ingredient of recipe.ingredients){
+        let ingredientName=ingredient.ingredient.toLowerCase();
+        if(!testPresence(ingredientName,ingredientsList)){
+            ingredientsList.push(ingredientName);
         }
-    });
-    recipe.ustensils.forEach(ustensil=>{
-        if(!ustensilsList.includes(ustensil.toLowerCase())){
-            ustensilsList.push(ustensil.toLowerCase());
+    }
+    for(let ustensil of recipe.ustensils){
+        let ustensilName = ustensil.toLowerCase();
+        if(!testPresence(ustensilName, ustensilsList)){
+            ustensilsList.push(ustensilName);
         }
-    });
-    if(!appliancesList.includes(recipe.appliance.toLowerCase())){
-        appliancesList.push(recipe.appliance.toLowerCase());
+    }
+    let applianceName = recipe.appliance.toLowerCase();
+    if(!testPresence(applianceName, appliancesList)){
+        appliancesList.push(applianceName);
     }
 }
 
@@ -84,9 +87,9 @@ function research(inputList){
 
 //empties the options lists of the selects' DOM
 function emptySelects(){
-    document.querySelectorAll(".option-list").forEach(optionList=>{
+    for(let optionList of document.querySelectorAll(".option-list")){
         optionList.innerHTML="";
-    });
+    }
 }
 
 //applies the search of the select input bar on the options list
@@ -137,21 +140,21 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
 
 function testText(recipe, text){
 
-    if(recipe.name.includes(text)){
+    if(testPresenceString(text,recipe.name)){
         return true;
     }
 
-    if(recipe.description.includes(text)){
+    if(testPresenceString(text, recipe.description)){
         return true;
     }
 
     let isInIngredients=false;
 
-    recipe.ingredients.forEach(ingredient => {
-        if(ingredient.ingredient.includes(text)){
+    for(let ingredient of recipe.ingredients){
+        if(testPresenceString(text, ingredient.ingredient)){
             isInIngredients = true;
         }
-    });
+    }
 
     return isInIngredients;
 
@@ -188,5 +191,3 @@ function initAlgo(){
 }
 
 initAlgo();
-
-//RECUPERER LE NOMBRE DE RECETTES AFFICHEES POUR SAVOIR QUAND LANCER LA RECHERCHE ET DONC OPTIMISER ?

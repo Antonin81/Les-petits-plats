@@ -92,3 +92,27 @@ function deleteRecipe(recipesToDisplay, recipeToTest){
         }
     }
 }
+
+function testPresenceString(stringToFind, stringToFindIn){
+    let stringToFindLength = stringToFind.length;
+    let stringToFindInLength = stringToFindIn.length;
+    if(!(stringToFindLength > stringToFindInLength)){
+        for (let i=0; i<stringToFindInLength; i++){
+            if(stringToFindIn[i] == stringToFind[0]){
+                let wordToTest = subString(stringToFindIn, i, i+stringToFindLength)
+                if(stringToFind==wordToTest){
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
+}
+
+function subString(string, indexStart, indexEnd){
+    let stringBuilder = "";
+    for(let i=indexStart; i<indexEnd; i++){
+        stringBuilder+=string[i];
+    }
+    return stringBuilder;
+}
