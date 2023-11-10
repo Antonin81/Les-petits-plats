@@ -1,10 +1,19 @@
 let dictionnary=new Map();
 let fullDictionnary=new Map();
 
+//empties the sections filled by recipes
 function emptyRecipes(){
     document.getElementById("recipies").innerHTML="";
 }
 
+//empties the list of options in the selects
+function resetOptionLists(){
+    ingredientsList = [];
+    appliancesList = [];
+    ustensilsList = [];
+}
+
+//sets the lists of the items that will be in the selects' options
 function buildOptionLists(recipe){
     for(let ingredient of recipe.ingredients){
         let ingredientName=ingredient.ingredient.toLowerCase();
@@ -50,7 +59,7 @@ function fromFiltersCreateCardsDOM(recipesForDOM, recipesToDisplay){
     researchInSelects();
 }
 
-
+//creates a list of recipes that must be displayed according to a list of filters
 function searchRecipesToDisplay(inputList){
     let recipesToDisplay=[];
     if(inputList.length == 0){
@@ -78,6 +87,7 @@ function searchRecipesToDisplay(inputList){
     return recipesToDisplay;
 }
 
+//initiates the research by filters
 function research(inputList){
     emptyRecipes();
     unShowAbsenceMessage();
@@ -97,12 +107,6 @@ function researchInSelects(){
     inputSelectHandler(ingredientsInput, ingredientsList, ingredientsSelect);
     inputSelectHandler(appliancesInput, appliancesList, appliancesSelect);
     inputSelectHandler(ustensilsInput, ustensilsList, ustensilsSelect);
-}
-
-function resetOptionLists(){
-    ingredientsList = [];
-    appliancesList = [];
-    ustensilsList = [];
 }
 
 //creates the cards DOM according to string in the main search bar
@@ -138,6 +142,7 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
     researchInSelects();
 }
 
+//tests the presence of a string in the title, the description or the ingredients of a recipe
 function testText(recipe, text){
 
     if(testPresenceString(text,recipe.name)){

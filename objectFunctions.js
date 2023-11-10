@@ -1,3 +1,4 @@
+//equlity test between two arrays
 function equalsArray(arr1, arr2){
     if(arr1.length == arr2.length){
         for (let i=0; i<arr1.length; i++){
@@ -10,6 +11,7 @@ function equalsArray(arr1, arr2){
     return false;
 }
 
+//equlity test between two maps
 function equalsMap(map1, map2){
     if(map1.size!=map2.size){
         return false;
@@ -22,7 +24,7 @@ function equalsMap(map1, map2){
     return true;
 }
 
-
+//fills an array with all the values that are in a map
 function allRecipesInDictionnary(map){
     let list = [];
     for (let [key, vals] of map){
@@ -35,7 +37,7 @@ function allRecipesInDictionnary(map){
     return list;
 }
 
-
+//puts all the ingredients needed in a given map from a recipe
 function initIngredients(dictionnaryToFill, recipe){
     for (let ingredient of recipe.ingredients){
         ingredientName=ingredient.ingredient.toLowerCase();
@@ -47,6 +49,7 @@ function initIngredients(dictionnaryToFill, recipe){
     }
 }
 
+//puts the appliance needed in a given map from a recipe
 function initAppliance(dictionnaryToFill, recipe){
     let applianceName = recipe.appliance.toLowerCase();
     if(!dictionnaryToFill.get(applianceName)){
@@ -56,6 +59,7 @@ function initAppliance(dictionnaryToFill, recipe){
     }
 }
 
+//puts all the ustensils needed in a given map from a recipe
 function initUstensils(dictionnaryToFill, recipe){
     for (let ustensil of recipe.ustensils){
         let ustensilName = ustensil.toLowerCase();
@@ -67,6 +71,7 @@ function initUstensils(dictionnaryToFill, recipe){
     }
 }
 
+//fills a map with the elements of a given array
 function initDictionnary(dictionnaryToFill, recipeList){
     for (let recipe of recipeList){
         initIngredients(dictionnaryToFill, recipe);
@@ -75,6 +80,7 @@ function initDictionnary(dictionnaryToFill, recipeList){
     }
 }
 
+//tests the presence of an element in an array
 function testPresence(element, arrayToTest) {
     let isInTheArray = false;
     for(let idToTest of arrayToTest){
@@ -85,6 +91,7 @@ function testPresence(element, arrayToTest) {
     return isInTheArray;
 }
 
+//deletes an element in an array
 function deleteRecipe(recipesToDisplay, recipeToTest){
     for (let i=0; i<recipesToDisplay.length; i++){
         if(recipesToDisplay[i]==recipeToTest){
@@ -93,6 +100,7 @@ function deleteRecipe(recipesToDisplay, recipeToTest){
     }
 }
 
+//tests the presence of a string into another string
 function testPresenceString(stringToFind, stringToFindIn){
     let stringToFindLength = stringToFind.length;
     let stringToFindInLength = stringToFindIn.length;
@@ -109,6 +117,7 @@ function testPresenceString(stringToFind, stringToFindIn){
     return false;
 }
 
+//cuts a section of a string using given indexes 
 function subString(string, indexStart, indexEnd){
     let stringBuilder = "";
     for(let i=indexStart; i<indexEnd; i++){
