@@ -118,6 +118,14 @@ function toggleDropdown(button){
     }
 }
 
+function showAbsenceMessage(){
+    document.getElementById("no-recipes-message").style.display="block";
+}
+
+function unShowAbsenceMessage(){
+    document.getElementById("no-recipes-message").style.display="none";
+}
+
 function init(){
     createCardsDOM(recipes);
     createSelectsDOM();
