@@ -309,3 +309,7 @@ article h3{
     padding: 15px 0 15px 0;
     display: none;
 }
+
+.word-message{
+    word-break: break-all;
+}
