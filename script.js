@@ -122,7 +122,8 @@ function toggleDropdown(button){
     }
 }
 
-function showAbsenceMessage(){
+function showAbsenceMessage(input){
+    document.querySelector(".word-message").textContent=input;
     document.getElementById("no-recipes-message").style.display="block";
 }
 
