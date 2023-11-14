@@ -48,10 +48,6 @@ function fromFiltersCreateCardsDOM(recipesForDOM, inputList){
         }        
     });
 
-    if(recipesCount==0){
-        showAbsenceMessage();
-    }
-
     document.getElementById("recipies").innerHTML=cardsDOM;
     createCountDOM(recipesCount);
     emptySelects();
@@ -80,7 +76,7 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
     });
 
     if(recipesCount==0){
-        showAbsenceMessage();
+        showAbsenceMessage(text);
     }
 
     document.getElementById("recipies").innerHTML=cardsDOM;
