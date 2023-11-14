@@ -47,10 +47,6 @@ function fromFiltersCreateCardsDOM(recipesForDOM, recipesToDisplay){
         }  
     }
 
-    if(recipesCount==0){
-        showAbsenceMessage();
-    }
-
     document.getElementById("recipies").innerHTML=cardsDOM;
     createCountDOM(recipesCount);
     emptySelects();
@@ -128,7 +124,7 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
     }
 
     if(recipesCount==0){
-        showAbsenceMessage();
+        showAbsenceMessage(text);
     }
 
     dictionnary = new Map();
