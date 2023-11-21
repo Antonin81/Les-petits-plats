@@ -112,9 +112,10 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
     resetOptionLists();
     let recipesCount = 0;
     let recipesToPutInDictionnary = [];
+    let recipesToDisplay = searchRecipesToDisplay(inputList);
     for(let recipe of recipesForDOM){
         if(testText(recipe, text)){
-            if(inputList.length === 0 || testPresence(recipe.id, searchRecipesToDisplay(inputList))){
+            if(inputList.length === 0 || testPresence(recipe.id, recipesToDisplay)){
                 buildOptionLists(recipe);
                 cardsDOM+=createCardDOM(recipe);
                 recipesCount++;
