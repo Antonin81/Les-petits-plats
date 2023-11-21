@@ -66,7 +66,7 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
 
     recipesForDOM.forEach(recipe => {
         if(testText(recipe, text)){
-            if(inputList.length == 0 || tests(recipe, inputList)){
+            if(inputList.length === 0 || tests(recipe, inputList)){
                 buildOptionLists(recipe);
                 cardsDOM+=createCardDOM(recipe);
                 recipesCount++;
@@ -75,7 +75,7 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
         }        
     });
 
-    if(recipesCount==0){
+    if(recipesCount===0){
         showAbsenceMessage(text);
     }
 
@@ -167,7 +167,7 @@ function searchFromText(stringLength, text, inputList){
         if(recipesToFilter.length<recipes.length){
             recipesToFilter = [...recipes];
             //displays all the recipes if not any filters are applied, else applies the filters on all recipes
-            if(inputList.length == 0){
+            if(inputList.length === 0){
                 unShowAbsenceMessage();
                 emptySelects();
                 createCardsDOM(recipes);
@@ -183,5 +183,5 @@ function searchFromText(stringLength, text, inputList){
 
 //launches all the tests by filters
 function tests(recipe, inputList){
-    return (testAppliance(recipe, inputList) + testUstensils(recipe, inputList) + testIngredients(recipe, inputList))==inputList.length;
+    return (testAppliance(recipe, inputList) + testUstensils(recipe, inputList) + testIngredients(recipe, inputList))===inputList.length;
 }
