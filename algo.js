@@ -58,7 +58,7 @@ function fromFiltersCreateCardsDOM(recipesForDOM, recipesToDisplay){
 //creates a list of recipes that must be displayed according to a list of filters
 function searchRecipesToDisplay(inputList){
     let recipesToDisplay=[];
-    if(inputList.length == 0){
+    if(inputList.length === 0){
         if(equalsMap(dictionnary, fullDictionnary)){
             for(let i=0; i<recipes.length; i++){
                 recipesToDisplay.push(i+1);
@@ -69,7 +69,7 @@ function searchRecipesToDisplay(inputList){
         }
     }
     for (let i=0; i<inputList.length; i++){
-        if (i==0){
+        if (i===0){
             recipesToDisplay = [...dictionnary.get(inputList[i])];
         } else {
             let arrayToTest = [...dictionnary.get(inputList[i])];
@@ -114,7 +114,7 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
     let recipesToPutInDictionnary = [];
     for(let recipe of recipesForDOM){
         if(testText(recipe, text)){
-            if(inputList.length == 0 || testPresence(recipe.id, searchRecipesToDisplay(inputList))){
+            if(inputList.length === 0 || testPresence(recipe.id, searchRecipesToDisplay(inputList))){
                 buildOptionLists(recipe);
                 cardsDOM+=createCardDOM(recipe);
                 recipesCount++;
@@ -123,7 +123,7 @@ function fromSearchCreateCardsDOM(recipesForDOM, text, inputList){
         } 
     }
 
-    if(recipesCount==0){
+    if(recipesCount===0){
         showAbsenceMessage(text);
     }
 
@@ -172,7 +172,7 @@ function searchFromText(stringLength, text, inputList){
         if(!equalsMap(dictionnary, fullDictionnary)){
             dictionnary = new Map();
             initDictionnary(dictionnary, recipes);
-            if(inputList.length == 0){
+            if(inputList.length === 0){
                 unShowAbsenceMessage();
                 emptySelects();
                 createCardsDOM(recipes);

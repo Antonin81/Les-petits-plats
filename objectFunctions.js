@@ -1,8 +1,8 @@
 //equlity test between two arrays
 function equalsArray(arr1, arr2){
-    if(arr1.length == arr2.length){
+    if(arr1.length === arr2.length){
         for (let i=0; i<arr1.length; i++){
-            if(! arr1[i]==arr2[i]){
+            if(! arr1[i]===arr2[i]){
                 return false;
             }
         }
@@ -84,7 +84,7 @@ function initDictionnary(dictionnaryToFill, recipeList){
 function testPresence(element, arrayToTest) {
     let isInTheArray = false;
     for(let idToTest of arrayToTest){
-        if(element==idToTest){
+        if(element===idToTest){
             isInTheArray=true;
         }
     }
@@ -94,7 +94,7 @@ function testPresence(element, arrayToTest) {
 //deletes an element in an array
 function deleteRecipe(recipesToDisplay, recipeToTest){
     for (let i=0; i<recipesToDisplay.length; i++){
-        if(recipesToDisplay[i]==recipeToTest){
+        if(recipesToDisplay[i]===recipeToTest){
             recipesToDisplay.splice(i,1);
         }
     }
@@ -106,9 +106,9 @@ function testPresenceString(stringToFind, stringToFindIn){
     let stringToFindInLength = stringToFindIn.length;
     if(!(stringToFindLength > stringToFindInLength)){
         for (let i=0; i<stringToFindInLength; i++){
-            if(stringToFindIn[i] == stringToFind[0]){
+            if(stringToFindIn[i] === stringToFind[0]){
                 let wordToTest = subString(stringToFindIn, i, i+stringToFindLength)
-                if(stringToFind==wordToTest){
+                if(stringToFind===wordToTest){
                     return true;
                 }
             }
