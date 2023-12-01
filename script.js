@@ -2,6 +2,10 @@ let ingredientsList = [];
 let appliancesList = [];
 let ustensilsList = [];
 
+/**
+ * 
+ * Creates all the recipy cards of the DOM
+ */
 function createCardsDOM(recipesForDOM){
     let cardsDOM = "";
     ingredientsList = [];
@@ -17,6 +21,10 @@ function createCardsDOM(recipesForDOM){
     createCountDOM(recipesCount);
 }
 
+/**
+ * 
+ * Creates one recipy card of the DOM
+ */
 function createCardDOM(recipe){
 
     let DOM = `
@@ -62,6 +70,10 @@ function createCardDOM(recipe){
     return DOM;
 }
 
+/**
+ * 
+ * Puts strings in this format : "String"
+ */
 function formatString(string){
     let lowerString=string.toLowerCase();
     let formatedString = "";
@@ -72,6 +84,10 @@ function formatString(string){
     return formatedString
 }
 
+/**
+ * 
+ * Creates an option for the select menus for filters
+ */
 function createOptionDOM(array){
     let DOM = "";
     array.forEach(element => {
@@ -80,6 +96,9 @@ function createOptionDOM(array){
     return DOM;
 }
 
+/**
+ * Fills the select menus with the options that are available
+ */
 function createSelectsDOM(){
     let ingredientsSelect = document.getElementById("Ingredients").nextElementSibling.querySelector(".option-list");
     let applianceSelect = document.getElementById("Appliances").nextElementSibling.querySelector(".option-list");
@@ -89,10 +108,17 @@ function createSelectsDOM(){
     ustensilsSelect.innerHTML=createOptionDOM(ustensilsList);
 }
 
+/**
+ * 
+ * Writes the right numbre in the displayed recipies counter
+ */
 function createCountDOM(count){
     document.getElementById("sort-section").querySelector("h2").innerHTML=`${count} recettes`;
 }
 
+/**
+ * Closes all the select menus
+ */
 function closeAllDropdowns(){
     document.querySelectorAll(".select-button").forEach(select => {
         closeDropdown(select, select.nextElementSibling);
@@ -122,11 +148,18 @@ function toggleDropdown(button){
     }
 }
 
+/**
+ * 
+ * Displays the message when there are no recipies corresponding to filters
+ */
 function showAbsenceMessage(input){
     document.querySelector(".word-message").textContent=input;
     document.getElementById("no-recipes-message").style.display="block";
 }
 
+/**
+ *  Shows the message when there are no recipies corresponding to filters
+ */
 function unShowAbsenceMessage(){
     document.getElementById("no-recipes-message").style.display="none";
 }
