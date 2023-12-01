@@ -2,15 +2,20 @@ let ingredientsList = [];
 let appliancesList = [];
 let ustensilsList = [];
 
+//empties the list of options in the selects
+function resetOptionLists(){
+    ingredientsList = [];
+    appliancesList = [];
+    ustensilsList = [];
+}
+
 /**
  * 
  * Creates all the recipy cards of the DOM
  */
 function createCardsDOM(recipesForDOM){
     let cardsDOM = "";
-    ingredientsList = [];
-    appliancesList = [];
-    ustensilsList = [];
+    resetOptionLists();
     let recipesCount=0;
     
     recipesForDOM.forEach(recipe => {
