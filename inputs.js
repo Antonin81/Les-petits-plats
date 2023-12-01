@@ -10,10 +10,18 @@ let searchButton = document.querySelector(".header-form button");
 
 let filtersList = [];
 
+/**
+ * 
+ * Empties a given select menu
+ */
 function emptySelect(select){
     select.innerHTML="";
 }
 
+/**
+ * 
+ * Handler for the search action in select menus' search bars 
+ */
 function inputSelectHandler(target, list, select){
     emptySelect(select);
     let tempoList=[];
@@ -26,6 +34,10 @@ function inputSelectHandler(target, list, select){
     createOptionHandlers();
 }
 
+/**
+ * 
+ * Creates the DOM element of a filter
+ */
 function createFilterDOM(filter){
     let filterElement = document.createElement("div");
     filterElement.classList.add("filter");
@@ -43,6 +55,10 @@ function createFilterDOM(filter){
     return filterElement;
 }
 
+/**
+ * 
+ * Handler for the click event on a select menu's option
+ */
 function optionHandler(e){
     if(filtersList.includes(e.target.getAttribute("data-value"))){
         filtersList.splice(filtersList.indexOf(e.target.getAttribute("data-value")), 1);
@@ -55,6 +71,10 @@ function optionHandler(e){
     research(filtersList);
 }
 
+/**
+ * 
+ * Handler for the click on a filter's cross
+ */
 function filterHandler(e){
     let filterElement=e.target;
     while(!filterElement.classList.contains("filter")){
@@ -65,6 +85,9 @@ function filterHandler(e){
     research(filtersList);
 }
 
+/**
+ * Adds event listeners for clicks on the newly created options
+ */
 function createOptionHandlers(){
     let selectButtons = document.querySelectorAll(".buttonSelect");
     selectButtons.forEach(selectButton => {
@@ -76,6 +99,9 @@ function createOptionHandlers(){
     })
 }
 
+/**
+ * Handler for the search event in the main search bar
+ */
 function searchHandler(){
     searchFromText(searchInput.value.length, searchInput.value, filtersList);
 }
