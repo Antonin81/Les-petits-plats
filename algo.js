@@ -1,6 +1,9 @@
 //list of recipes resulting of a search without using the filters
 let recipesToFilter = [...recipes];
 
+/**
+ * resets the lists containing the options available in the select menus
+ */
 function resetOptionLists(){
     ingredientsList = [];
     appliancesList = [];
