@@ -6,13 +6,6 @@ function emptyRecipes(){
     document.getElementById("recipies").innerHTML="";
 }
 
-//empties the list of options in the selects
-function resetOptionLists(){
-    ingredientsList = [];
-    appliancesList = [];
-    ustensilsList = [];
-}
-
 //sets the lists of the items that will be in the selects' options
 function buildOptionLists(recipe){
     for(let ingredient of recipe.ingredients){
