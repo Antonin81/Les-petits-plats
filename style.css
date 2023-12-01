@@ -87,6 +87,7 @@ h1{
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: filter 0.2s, background-color 0.2s;
 }
 
 .magnifying-glass{
